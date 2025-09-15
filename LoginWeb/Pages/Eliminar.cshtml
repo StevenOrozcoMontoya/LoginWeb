@@ -1,0 +1,31 @@
+﻿@page
+@model LoginWeb.Pages.EliminarModel
+@{
+    ViewData["Title"] = "Eliminar Usuario";
+}
+
+<h2>@ViewData["Title"]</h2>
+<p>En este formulario puede Eliminar usuarios solo digitando el nombre de usuario, si el usuario ingresado no existe el sistema va indicar que no existe dicho usuario.</p>
+<form method="post">
+    <div class="mb-3">
+        <label for="nombre" class="form-label">Nombre del Usuario</label>
+        <input type="text" class="form-control" id="nombre" name="Nombre" required value="@Model.Nombre">
+    </div>
+    <button type="submit" class="btn btn-danger">Eliminar</button>
+</form>
+
+@if (Model.Mensaje != null)
+{
+    <div class="alert alert-info mt-3">@Model.Mensaje</div>
+
+    @if (Model.EliminacionExitosa)
+    {
+        <script>
+            // Redirige después de 5 segundos
+            setTimeout(function () {
+                window.location.href = '/Index';
+            }, 5000);
+        </script>
+    }
+}
+
